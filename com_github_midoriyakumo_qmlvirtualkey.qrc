@@ -1,0 +1,6 @@
+
+<RCC>
+    <qresource prefix="/com/github/midoriyakumo/qmlvirtualkey">
+        <file>qmldir</file>
+    </qresource>
+</RCC>
