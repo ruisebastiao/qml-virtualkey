@@ -12,8 +12,7 @@ Item  {
 
 	property bool enablePad: true
 	property bool enableGameButton: true
-	property Item centerItem: row
-	property alias spacing: row.spacing
+	property int spacing
 
 	property int modifier
 	property var keys:[
@@ -22,34 +21,11 @@ Item  {
 //		{text:"Shift", key:Qt.Key_Shift, hold:true}
 	]
 
-	Row {
-		id: row
 
-		anchors.bottom: parent.bottom
-		anchors.horizontalCenter: parent.horizontalCenter
-		anchors.horizontalCenterOffset: {
-			var r = 0
-			if (vkeys.enablePad)
-				r += virtualpad.width
-			if (vkeys.enableGameButton)
-				r -= virtualGameButton.width
-			return r/2
-		}
-		anchors.margins: 8
-		spacing: 8
-
-		Repeater {
-			model: keys
-			delegate: VirtualKey {
-				target: vkeys.target
-				targetHandler: vkeys.targetHandler
-				text: modelData.text
-				key: (modelData["key"]===undefined)?
-						 0:modelData.key
-				modifier: (modelData["modifier"]===undefined)?
-							  vkeys.modifier:modelData.modifier
-			}
-		}
+	property Item centerItem: RowKeys {
+		parent: vkeys
+		keys: parent.keys
+		spacing: parent.spacing
 	}
 
 	VirtualPad {
