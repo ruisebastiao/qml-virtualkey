@@ -1,9 +1,12 @@
-module com.github.midoriyakumo.qmlvirtualkey
+module	com.github.midoriyakumo.qmlvirtualkey
 
-singleton KeyEventSource 1.0 KeyEventSource.qml
+singleton	KeyEventSource	1.0	KeyEventSource.qml
+singleton	Units	1.0	Units.qml
 
 VirtualKey	1.0	VirtualKey.qml
 VirtualPad	1.0	VirtualPad.qml
+GamButton	1.0	GamButton.qml
+RowKeys		1.0	RowKeys.qml
 VirtualKeys	1.0	VirtualKeys.qml
 
-Utils 1.0 utils.js
+Utils	1.0	utils.js

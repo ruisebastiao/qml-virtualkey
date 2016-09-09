@@ -6,21 +6,22 @@ import "."
 
 Canvas {
 	id: control
-	implicitHeight: 200
+	implicitHeight: Units.dp * 64 * 3
 	width: height
 
 	property Item target: parent.target
 	property var targetHandler: parent.targetHandler
 
-	property bool enableBearing: true
+	property bool deflectable: true
+	property bool pressed
 	property int repeatInterval: 33
 	property int direction
-	property alias pressed: mouse.pressed
-
-	property int arrowSize: height/10
+	property int arrowSize: height/9
+	property int innerRadius: (height-arrowSize*6)/2
 
 	opacity: .7
 
+	onPressedChanged: requestPaint()
 	onDirectionChanged: requestPaint()
 
 	onPaint: {
@@ -36,7 +37,7 @@ Canvas {
 
 
 		ctx.beginPath()
-		ctx.arc(height/2, width/2, arrowSize*2, 0, 2 * Math.PI)
+		ctx.arc(height/2, width/2, innerRadius, 0, 2 * Math.PI)
 		ctx.strokeStyle = control.Material.primaryTextColor
 		ctx.stroke()
 		ctx.closePath()
@@ -106,17 +107,17 @@ Canvas {
 
 			var dis = Math.sqrt(x*x+y*y)
 
-			if (dis<arrowSize*2 || dis*2>height) {
+			if (dis<innerRadius || dis*2>height) {
 				return 0
 			}
 
-			if (enableBearing) {
-				if (Math.abs(x)>2*Math.abs(y))
+			if (deflectable) {
+				if (Math.abs(x)>1.732*Math.abs(y))
 					if (x>0)
 						return 1 // right
 					else
 						return 4 // left
-				else if (Math.abs(x)*2<Math.abs(y))
+				else if (Math.abs(x)*1.732<Math.abs(y))
 					if (y>0)
 						return 8 // down
 					else
@@ -137,12 +138,14 @@ Canvas {
 		onPressed: {
 			posX = mouseX
 			posY = mouseY
+			control.pressed = true
 			trigger.start()
 		}
 
 		onEntered: {
 			posX = mouseX
 			posY = mouseY
+			control.pressed = true
 			trigger.start()
 		}
 
@@ -153,11 +156,13 @@ Canvas {
 
 		onReleased: {
 			trigger.stop()
+			control.pressed = false
 			control.direction = 0
 		}
 
 		onExited: {
 			trigger.stop()
+			control.pressed = false
 			control.direction = 0
 		}
 
