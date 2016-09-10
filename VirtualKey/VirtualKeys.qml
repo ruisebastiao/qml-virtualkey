@@ -55,7 +55,7 @@ Item  {
 
 		color: Material.backgroundColor
 
-		property Item centerItem
+		property Item centerItem: Item { }
 
 		VirtualPad {
 			id: virtualpad
@@ -119,6 +119,7 @@ Item  {
 
 	Component.onCompleted: {
 		centerItem.parent = controls
+		anchors.bottomMargin = active?0:-controls.height
 		overlayTarget.anchors.bottomMargin = Qt.binding(function(){
 			return (overlay||!active)?0:controls.height
 		})

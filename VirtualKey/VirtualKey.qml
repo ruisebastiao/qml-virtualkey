@@ -6,9 +6,9 @@ import "."
 Button {
 	id: control
 
-	text: "Tab"
+	text: "Unkown"
 
-	property int key: Qt.Key_Tab
+	property int key: Qt.Key_unknown
 	property int modifier: Qt.NoModifier
 	property Item target: parent.target
 	property var targetHandler: parent.targetHandler

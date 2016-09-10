@@ -6,9 +6,10 @@ import VirtualKey 1.0
 
 Window {
 	visible: true
-	width: 800
+	width: Math.max(800, row.width + Units.gu * 2)
 	height: 600
 	title: qsTr("Login")
+
 
 	FocusScope {
 		id: root
@@ -48,6 +49,7 @@ Window {
 		modifier: shiftKey.checked?Qt.ShiftModifier:Qt.NoModifier
 
 		centerItem: RowKeys {
+			id: row
 			spacing: 2
 			keys:  {
 				var t = []

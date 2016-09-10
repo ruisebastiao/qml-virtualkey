@@ -180,13 +180,13 @@ Canvas {
 					target.focus = true
 				if (control.targetHandler) {
 					if (control.direction & 1)
-						control.targetHandler.rightPressed(dummy)
+						control.targetHandler.rightPressed(InputEventSource.dummy)
 					if (control.direction & 2)
-						control.targetHandler.upPressed(dummy)
+						control.targetHandler.upPressed(InputEventSource.dummy)
 					if (control.direction & 4)
-						control.targetHandler.leftPressed(dummy)
+						control.targetHandler.leftPressed(InputEventSource.dummy)
 					if (control.direction & 8)
-						control.targetHandler.downPressed(dummy)
+						control.targetHandler.downPressed(InputEventSource.dummy)
 				} else {
 					if (control.direction & 1)
 						InputEventSource.keyPress(Qt.Key_Right, Qt.NoModifier, -1)

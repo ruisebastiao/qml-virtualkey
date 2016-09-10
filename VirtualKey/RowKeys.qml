@@ -12,7 +12,7 @@ Row {
 
 	property var keys:[
 		{text:"X"},
-		{text:"Shift", key:Qt.Key_Shift, hold:true},
+		{text:"Shift", key:Qt.Key_Shift/*, hold:true*/},
 		{text:"Space", key:Qt.Key_Space, modifier: Qt.ControlModifier}
 	]
 
