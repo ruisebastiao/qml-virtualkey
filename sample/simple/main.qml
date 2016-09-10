@@ -1,7 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
-import QtQuick.Controls.Material 2.0
 
 import VirtualKey 1.0
 
@@ -44,7 +43,7 @@ Window {
 		target: root
 		enablePad: false
 		enableGameButtons: false
-		color: "#8080a0f0"
+		color: "#d6d7d7"
 		overlay: toggleOverlay.checked
 		modifier: shiftKey.checked?Qt.ShiftModifier:Qt.NoModifier
 

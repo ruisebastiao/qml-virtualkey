@@ -37,12 +37,12 @@ Button {
 				}
 			}
 			if (!done && text.length == 1) {
-				KeyEventSource.keyClickChar(text, modifier, -1)
+				InputEventSource.keyClickChar(text, modifier, -1)
 				done = true
 			}
 		}
 		if (!done)
-			KeyEventSource.keyClick(key, modifier, -1)
+			InputEventSource.keyClick(key, modifier, -1)
 	}
 
 //	onPressed: {

@@ -189,13 +189,13 @@ Canvas {
 						control.targetHandler.downPressed(dummy)
 				} else {
 					if (control.direction & 1)
-						KeyEventSource.keyPress(Qt.Key_Right, Qt.NoModifier, -1)
+						InputEventSource.keyPress(Qt.Key_Right, Qt.NoModifier, -1)
 					if (control.direction & 2)
-						KeyEventSource.keyPress(Qt.Key_Up, Qt.NoModifier, -1)
+						InputEventSource.keyPress(Qt.Key_Up, Qt.NoModifier, -1)
 					if (control.direction & 4)
-						KeyEventSource.keyPress(Qt.Key_Left, Qt.NoModifier, -1)
+						InputEventSource.keyPress(Qt.Key_Left, Qt.NoModifier, -1)
 					if (control.direction & 8)
-						KeyEventSource.keyPress(Qt.Key_Down, Qt.NoModifier, -1)
+						InputEventSource.keyPress(Qt.Key_Down, Qt.NoModifier, -1)
 				}
 			}
 		}

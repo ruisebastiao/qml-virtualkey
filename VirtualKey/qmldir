@@ -1,6 +1,6 @@
 module	com.github.midoriyakumo.qmlvirtualkey
 
-singleton	KeyEventSource	1.0	KeyEventSource.qml
+singleton	InputEventSource	1.0	InputEventSource.qml
 singleton	Units	1.0	Units.qml
 
 VirtualKey	1.0	VirtualKey.qml

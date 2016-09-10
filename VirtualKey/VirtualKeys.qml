@@ -29,7 +29,7 @@ Item  {
 		visible: vkeys.overlay
 		gradient: Gradient {
 			GradientStop { position: 0; color:"transparent" }
-			GradientStop { position: 1; color:"#80000000" }
+			GradientStop { position: 1; color:"#40000000" }
 		}
 		anchors.bottom: controls.top
 		width: controls.width
