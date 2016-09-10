@@ -5,7 +5,7 @@ singleton	Units	1.0	Units.qml
 
 VirtualKey	1.0	VirtualKey.qml
 VirtualPad	1.0	VirtualPad.qml
-GamButton	1.0	GamButton.qml
+GameButton	1.0	GameButton.qml
 RowKeys		1.0	RowKeys.qml
 VirtualKeys	1.0	VirtualKeys.qml
 

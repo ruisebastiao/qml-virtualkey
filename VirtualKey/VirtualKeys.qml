@@ -1,7 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtGraphicalEffects 1.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.Material.impl 2.0
 
 import "."
 
@@ -25,14 +25,16 @@ Item  {
 
 	property alias centerItem: controls.centerItem
 
-	DropShadow {
-		visible: overlay && vkeys.color.a>0
-		anchors.top: controls.top
-		anchors.fill: controls
-		horizontalOffset: 0
-		verticalOffset: 0
-		radius: 8 // elevation
-		source: controls
+	Rectangle {
+		visible: vkeys.overlay
+		gradient: Gradient {
+			GradientStop { position: 0; color:"transparent" }
+			GradientStop { position: 1; color:"#80000000" }
+		}
+		anchors.bottom: controls.top
+		width: controls.width
+		height: Units.dp * 8
+		opacity: controls.color.a * controls.opacity
 	}
 
 	Rectangle {
@@ -44,7 +46,6 @@ Item  {
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.bottom: parent.bottom
-		anchors.bottomMargin: vkeys.active?0:-height
 
 		property alias target: vkeys.target
 		property alias targetHandler: vkeys.targetHandler
@@ -53,13 +54,13 @@ Item  {
 		opacity: (vkeys.height-y)/height
 
 		color: Material.backgroundColor
-		//border.width: 2
 
 		property Item centerItem
 
 		VirtualPad {
 			id: virtualpad
 			visible: enablePad
+			opacity: (overlay && parent.color.a===0)?.7:1.
 			height: Units.dp * 64 * 3
 			anchors.bottom: parent.bottom
 			anchors.left: parent.left
@@ -68,7 +69,7 @@ Item  {
 			targetHandler: vkeys.targetHandler
 		}
 
-		GamButton {
+		GameButton {
 			id: gameButtons
 			visible: enableGameButtons
 			anchors.bottom: parent.bottom
@@ -77,6 +78,7 @@ Item  {
 			target: vkeys.target
 			targetHandler: vkeys.targetHandler
 		}
+
 	}
 
 	onActiveChanged:

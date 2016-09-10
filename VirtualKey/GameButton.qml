@@ -8,5 +8,6 @@ Item  {
 	property Item target: parent.target
 	property var targetHandler: parent.targetHandler
 
-	property var keys
+	property var keys: [
+	]
 }

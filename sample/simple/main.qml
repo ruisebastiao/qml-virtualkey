@@ -44,8 +44,8 @@ Window {
 		target: root
 		enablePad: false
 		enableGameButtons: false
+		color: "#8080a0f0"
 		overlay: toggleOverlay.checked
-		color: Material.primaryColor
 		modifier: shiftKey.checked?Qt.ShiftModifier:Qt.NoModifier
 
 		centerItem: RowKeys {

@@ -7,12 +7,11 @@ QtObject {
 	readonly property real pixelDensity: useLogicalPixelDensity?
 		Screen.logicalPixelDensity:
 		Screen.pixelDensity
-	readonly property real dpi: Screen.devicePixelRatio
 
 	readonly property real dp: pixelDensity*25.4*multiplier/160.
 	readonly property real gu: dp * 64
 
-	property bool useLogicalPixelDensity: true
+	property bool useLogicalPixelDensity: false
 	property real multiplier: 1.0
 
 }

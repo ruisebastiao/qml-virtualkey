@@ -1,12 +1,13 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.Material.impl 2.0
 
 import "."
 
 Canvas {
 	id: control
-	implicitHeight: Units.dp * 64 * 3
+	// implicitHeight: Units.dp * 64 * 3
 	width: height
 
 	property Item target: parent.target
@@ -18,6 +19,8 @@ Canvas {
 	property int direction
 	property int arrowSize: height/9
 	property int innerRadius: (height-arrowSize*6)/2
+
+	Material.elevation: pressed ? 8 : 2
 
 	opacity: .7
 
@@ -43,7 +46,7 @@ Canvas {
 		ctx.closePath()
 
 		ctx.fillStyle = direction&4?
-					control.Material.accentColor:
+					control.Material.primaryHighlightedTextColor:
 					control.Material.primaryTextColor
 
 		ctx.beginPath()
@@ -54,7 +57,7 @@ Canvas {
 		ctx.closePath()
 
 		ctx.fillStyle = direction&1?
-					control.Material.accentColor:
+					control.Material.primaryHighlightedTextColor:
 					control.Material.primaryTextColor
 
 		ctx.beginPath()
@@ -65,7 +68,7 @@ Canvas {
 		ctx.closePath()
 
 		ctx.fillStyle = direction&2?
-					control.Material.accentColor:
+					control.Material.primaryHighlightedTextColor:
 					control.Material.primaryTextColor
 
 		ctx.beginPath()
@@ -76,7 +79,7 @@ Canvas {
 		ctx.closePath()
 
 		ctx.fillStyle = direction&8?
-					control.Material.accentColor:
+					control.Material.primaryHighlightedTextColor:
 					control.Material.primaryTextColor
 
 		ctx.beginPath()
@@ -197,4 +200,9 @@ Canvas {
 			}
 		}
 	}
+
+//	layer.enabled: control.Material.buttonColor.a > 0
+//	layer.effect: ElevationEffect {
+//		elevation: control.Material.elevation
+//	}
 }

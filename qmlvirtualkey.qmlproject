@@ -17,7 +17,7 @@ Project {
 		directory: "."
 	}
 	Files {
-		directory: "."
+		directory: "VirtualKey"
 		files: [
 			"qmldir"
 		]
