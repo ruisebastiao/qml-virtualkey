@@ -42,21 +42,21 @@ Window {
 
 		active: true
 		target: root
-		enablePad: false
+//		enablePad: false
 		enableGameButtons: false
 		color: "#d6d7d7"
 		overlay: toggleOverlay.checked
-		modifier: shiftKey.checked?Qt.ShiftModifier:Qt.NoModifier
+		modifiers: shiftKey.checked?Qt.ShiftModifier:Qt.NoModifier
 
 		centerItem: RowKeys {
 			id: row
 			spacing: 2
 			keys:  {
 				var t = []
-				t.push({text:"Tab", key:Qt.Key_Tab, modifier:Qt.NoModifier})
+				t.push({text:"Tab", key:Qt.Key_Tab, modifiers:Qt.NoModifier})
 				for (var c='a'.charCodeAt(0);c<='z'.charCodeAt(0);c++) {
 					t.push({
-					   text:String.fromCharCode(modifier===Qt.ShiftModifier?
+					   text:String.fromCharCode(modifiers===Qt.ShiftModifier?
 													c-32:c)
 					})
 				}

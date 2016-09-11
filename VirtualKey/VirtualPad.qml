@@ -1,13 +1,14 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.Material.impl 2.0
+//import QtQuick.Controls.Material.impl 2.0
+import QtGraphicalEffects 1.0
 
 import "."
 
 Canvas {
 	id: control
-	// implicitHeight: Units.dp * 64 * 3
+	height: Units.dp * 64 * 3
 	width: height
 
 	property Item target: parent.target
@@ -201,8 +202,15 @@ Canvas {
 		}
 	}
 
-//	layer.enabled: control.Material.buttonColor.a > 0
-//	layer.effect: ElevationEffect {
-//		elevation: control.Material.elevation
-//	}
+	layer.enabled: true //control.Material.buttonColor.a > 0
+////	layer.effect: ElevationEffect { // Not work ???
+////		elevation: control.Material.elevation
+////	}
+	layer.effect: DropShadow {
+		cached : true
+		transparentBorder : true
+		color: Qt.rgba(0,0,0,.2)
+		radius: control.Material.elevation * 3
+		spread: 0
+	}
 }

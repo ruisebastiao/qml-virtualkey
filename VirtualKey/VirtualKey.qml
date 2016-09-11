@@ -9,7 +9,7 @@ Button {
 	text: "Unkown"
 
 	property int key: Qt.Key_unknown
-	property int modifier: Qt.NoModifier
+	property int modifiers: Qt.NoModifier
 	property Item target: parent.target
 	property var targetHandler: parent.targetHandler
 
@@ -29,7 +29,7 @@ Button {
 				if (targetHandler[t+"Pressed"]) {
 					var keyEvent = {
 						"key": key,
-						"modifiers": modifier,
+						"modifiers": modifiers,
 						"text": text
 					}
 					targetHandler[t+"Pressed"](keyEvent)
@@ -37,12 +37,12 @@ Button {
 				}
 			}
 			if (!done && text.length == 1) {
-				InputEventSource.keyClickChar(text, modifier, -1)
+				InputEventSource.keyClickChar(text, modifiers, -1)
 				done = true
 			}
 		}
 		if (!done)
-			InputEventSource.keyClick(key, modifier, -1)
+			InputEventSource.keyClick(key, modifiers, -1)
 	}
 
 //	onPressed: {

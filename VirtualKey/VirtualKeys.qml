@@ -1,14 +1,13 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.Material.impl 2.0
 
 import "."
 
 Item  {
 	id: vkeys
 
-	anchors.fill: parent
+	anchors.fill: overlay?overlayTarget:parent
 	visible: controls.opacity>0
 	property bool active: ["android", "ios"].indexOf(Qt.platform.os)>=0
 
@@ -21,7 +20,7 @@ Item  {
 	property bool enableGameButtons: true
 	property alias color: controls.color
 
-	property int modifier
+	property int modifiers
 
 	property alias centerItem: controls.centerItem
 
@@ -49,7 +48,7 @@ Item  {
 
 		property alias target: vkeys.target
 		property alias targetHandler: vkeys.targetHandler
-		property alias modifier: vkeys.modifier
+		property alias modifiers: vkeys.modifiers
 
 		opacity: (vkeys.height-y)/height
 
@@ -69,7 +68,7 @@ Item  {
 			targetHandler: vkeys.targetHandler
 		}
 
-		GameButton {
+		GameButtons {
 			id: gameButtons
 			visible: enableGameButtons
 			anchors.bottom: parent.bottom
@@ -119,6 +118,7 @@ Item  {
 
 	Component.onCompleted: {
 		centerItem.parent = controls
+//		centerItem.anchors.horizontalCenter = controls.horizontalCenter
 		anchors.bottomMargin = active?0:-controls.height
 		overlayTarget.anchors.bottomMargin = Qt.binding(function(){
 			return (overlay||!active)?0:controls.height

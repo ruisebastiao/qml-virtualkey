@@ -8,12 +8,12 @@ Row {
 	property Item target: parent.target
 	property var targetHandler: parent.targetHandler
 
-	property int modifier: parent.modifier
+	property int modifiers: parent.modifiers
 
 	property var keys:[
 		{text:"X"},
 		{text:"Shift", key:Qt.Key_Shift/*, hold:true*/},
-		{text:"Space", key:Qt.Key_Space, modifier: Qt.ControlModifier}
+		{text:"Space", key:Qt.Key_Space, modifiers: Qt.ControlModifier}
 	]
 
 	anchors.bottom: parent.bottom
@@ -29,8 +29,8 @@ Row {
 			text: modelData.text
 			key: (modelData["key"]===undefined)?
 					 0:modelData.key
-			modifier: (modelData["modifier"]===undefined)?
-						  row.modifier:modelData.modifier
+			modifiers: (modelData["modifiers"]===undefined)?
+						  row.modifiers:modelData.modifiers
 		}
 	}
 }
